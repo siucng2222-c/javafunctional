@@ -11,7 +11,6 @@ public class _Function {
         // Function = Function that take 1 argument
         int increment2 = incrementByOneFunction.apply(1);
         System.out.println(increment2);
-
         int multiply = multipleBy10Function.apply(increment2);
         System.out.println(multiply);
 
@@ -35,7 +34,7 @@ public class _Function {
         return num + 1;
     }
 
-    static BiFunction<Integer, Integer, Integer> increAndMultiBiFunction = (numberToIncre, numberToMulti) -> (numberToIncre + 1)*numberToMulti;
+    static BiFunction<Integer, Integer, Integer> increAndMultiBiFunction = (numberToIncre, numberToMulti) -> (numberToIncre + 1) * numberToMulti;
 
     static int incrementByOneAndMultiply(int num, int numToMultiplyBy) {
         return (num + 1) * numToMultiplyBy;
