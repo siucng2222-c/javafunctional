@@ -7,6 +7,7 @@ import lombok.ToString;
 import java.util.List;
 import java.util.function.Function;
 import java.util.function.IntConsumer;
+import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 
@@ -21,8 +22,8 @@ public class _Stream {
                 new Person("Aisha", FEMALE),
                 new Person("Alex", MALE),
                 new Person("Alice", FEMALE),
-                new Person("BOB", PREFER_NOT_TO_SAY)
-
+//                new Person("BOB", PREFER_NOT_TO_SAY)
+                new Person("BOB", MALE)
         );
 
         people.stream().map(person -> person.gender)
@@ -33,13 +34,30 @@ public class _Stream {
                 .mapToInt(String::length)
                 .forEach(System.out::println);
 
-        // Extract above lambda as separate variables
+        // Extract above as separate variables
         Function<Person, String> personStringFunction = person -> person.name;
         ToIntFunction<String> length = String::length;
         IntConsumer println = System.out::println;
         people.stream().map(personStringFunction)
                 .mapToInt(length)
                 .forEach(println);
+
+        //  Judge if list contain females only
+        Predicate<Person> personPredicate = person -> FEMALE.equals(person.gender);
+        boolean containOnlyFemales = people.stream()
+                .allMatch(personPredicate);
+        System.out.println(containOnlyFemales);
+
+        // Judge if list contain at least 1 female
+        boolean atLeastOneFemale = people.stream()
+                .anyMatch(personPredicate);
+        System.out.println(atLeastOneFemale);
+
+        // Judge if list does not contain PREFER_NOT_TO_SAY
+        boolean noPreferNotToSay = people.stream()
+                .noneMatch(person -> PREFER_NOT_TO_SAY.equals(person.gender));
+        System.out.println(noPreferNotToSay);
+
 
     }
 
