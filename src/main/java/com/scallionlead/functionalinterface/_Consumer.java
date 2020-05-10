@@ -15,7 +15,7 @@ public class _Consumer {
         greetCustomer(maria);
         greetCustomerV2(maria, false);
 
-        // Consumer Functional interface
+        // Customer Functional interface
         greetCustomerConsumer.accept(maria);
 
         // Biconsumer Functional interface
