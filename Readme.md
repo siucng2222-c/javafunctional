@@ -1,4 +1,4 @@
-#Pure functional programming has a set of rules to follow:
+## Pure functional programming has a set of rules to follow:
 1. No state
 2. Pure Functions
     1. Should not depend on global variables outside the function scope
